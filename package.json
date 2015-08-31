@@ -6,7 +6,6 @@
   "dependencies": {
     "moment": "*",
     "react": "^0.13.3",
-    "thinkjs": "*",
     "jquery": "^2.1.4"
   },
   "keywords": [],
