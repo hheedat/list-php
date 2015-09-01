@@ -12,17 +12,31 @@
 */
 
 Route::get('/', function () {
+    echo "///aaa";
     return view('welcome');
 });
 
 Route::group(['prefix' => 'index'], function () {
+
+    echo "index route";
+    // Matches The "/index/" URL
     Route::get('/', function () {
+
         return view('index', [
             'islogin' => true,
             'userinfo' => [
                 'username' => ''
             ]
         ]);
-        // Matches The "/index/" URL
+
     });
+
 });
+
+//Route::group(['prefix' => 'list', 'namespace' => 'ListItem'], function () {
+//
+////    echo "a1";
+//
+//    Route::get('/check/{id}', 'ListItemController@show');
+//
+//});
