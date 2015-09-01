@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: laravel_test
-        psr4_prefix: laravel_test
+        namespace: list_php
+        psr4_prefix: list_php
         src_path: app

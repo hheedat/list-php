@@ -1,6 +1,6 @@
 <?php
 
-namespace laravel_test\Console;
+namespace list_php\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \laravel_test\Console\Commands\Inspire::class,
+        \list_php\Console\Commands\Inspire::class,
     ];
 
     /**

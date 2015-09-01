@@ -1,6 +1,6 @@
 <?php
 
-namespace laravel_test\Http\Middleware;
+namespace list_php\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;

@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(laravel_test\User::class, function (Faker\Generator $faker) {
+$factory->define(list_php\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,

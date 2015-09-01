@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => laravel_test\User::class,
+    'model' => list_php\User::class,
 
     /*
     |--------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 <?php
 
-namespace laravel_test;
+namespace list_php;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;

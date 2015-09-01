@@ -1,8 +1,8 @@
 <?php
 
-namespace laravel_test\Http\Controllers\Auth;
+namespace list_php\Http\Controllers\Auth;
 
-use laravel_test\Http\Controllers\Controller;
+use list_php\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller
