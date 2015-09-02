@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: list_php
-        psr4_prefix: list_php
+        namespace: App
+        psr4_prefix: App
         src_path: app

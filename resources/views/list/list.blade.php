@@ -8,7 +8,14 @@
 
 @section('content')
     <div id="wrapper">
-        list list list test
+        list page
+
+        <div>
+            @foreach ($listItem as $item)
+                <p>This is list item {{ $item->id }} title {{$item->title}}</p>
+            @endforeach
+        </div>
+
     </div>
 @endsection
 

@@ -1,11 +1,13 @@
 <?php
 
-namespace list_php\Http\Controllers\ListItem;
+namespace App\Http\Controllers\ListItem;
 
 use Illuminate\Http\Request;
 
-use list_php\Http\Requests;
-use list_php\Http\Controllers\Controller;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\ListItem;
+//use DB;
 
 class ListItemController extends Controller
 {
@@ -32,7 +34,7 @@ class ListItemController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  Request $request
      * @return Response
      */
     public function store(Request $request)
@@ -43,24 +45,28 @@ class ListItemController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
-    public function show($id)
+    public function show()
     {
         //
+//        $listItem = DB::select('select * from think_list');
+        $listItem = ListItem::all();
+
         return view('list.list', [
             'islogin' => true,
             'userinfo' => [
-                'username' => $id
-            ]
+                'username' => ""
+            ],
+            'listItem' => $listItem
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function edit($id)
@@ -71,8 +77,8 @@ class ListItemController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
-     * @param  int  $id
+     * @param  Request $request
+     * @param  int $id
      * @return Response
      */
     public function update(Request $request, $id)
@@ -83,7 +89,7 @@ class ListItemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function destroy($id)

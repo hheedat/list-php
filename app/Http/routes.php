@@ -12,13 +12,13 @@
 */
 
 Route::get('/', function () {
-    echo "///aaa";
+
     return view('welcome');
+
 });
 
 Route::group(['prefix' => 'index'], function () {
 
-    echo "index route";
     // Matches The "/index/" URL
     Route::get('/', function () {
 
@@ -33,10 +33,8 @@ Route::group(['prefix' => 'index'], function () {
 
 });
 
-//Route::group(['prefix' => 'list', 'namespace' => 'ListItem'], function () {
-//
-////    echo "a1";
-//
-//    Route::get('/check/{id}', 'ListItemController@show');
-//
-//});
+Route::group(['prefix' => 'list', 'namespace' => 'ListItem'], function () {
+
+    Route::get('/check', 'ListItemController@show');
+
+});
