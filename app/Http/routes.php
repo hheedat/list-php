@@ -11,30 +11,42 @@
 |
 */
 
-Route::get('/', function () {
+Route::group(['middleware' => 'auth'], function () {
 
-    return view('welcome');
-
-});
-
-Route::group(['prefix' => 'index'], function () {
-
-    // Matches The "/index/" URL
     Route::get('/', function () {
+        \Log::error("test");
+        return view('auth.auth');
 
-        return view('index', [
-            'islogin' => true,
-            'userinfo' => [
-                'username' => ''
-            ]
-        ]);
 
     });
 
-});
+    Route::get('/login', function () {
 
-Route::group(['prefix' => 'list', 'namespace' => 'ListItem'], function () {
+        return view('auth.auth');
 
-    Route::get('/check', 'ListItemController@show');
+    });
+
+    Route::get('/register', function () {
+
+        return view('auth.auth');
+
+    });
+
+    Route::group(['prefix' => 'auth'], function () {
+
+        Route::get('login', 'Auth\AuthController@getLogin');
+        Route::post('login', 'Auth\AuthController@postLogin');
+        Route::get('logout', 'Auth\AuthController@getLogout');
+
+        Route::get('register', 'Auth\AuthController@getRegister');
+        Route::post('register', 'Auth\AuthController@postRegister');
+
+    });
+
+    Route::group(['prefix' => 'list', 'namespace' => 'ListItem'], function () {
+
+        Route::get('/check', 'ListItemController@show');
+
+    });
 
 });

@@ -2,7 +2,7 @@
     <div class="user-status">
         @if($islogin)
             <a href="/">{{ $userinfo['username'] }}</a>
-            <a class="logout-btn" href="/index/logout">退出</a>
+            <a class="logout-btn" href="/auth/logout">退出</a>
         @else
             <a href="/">首页-欢迎来到List，请您登录或注册</a>
         @endif

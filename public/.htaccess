@@ -13,4 +13,20 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+#    Options +SymLinksIfOwnerMatch
+#    RewriteEngine On
+#
+#    RewriteCond %{REQUEST_FILENAME} !-d
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteRule ^ index.php [L]
+
+#    Options +FollowSymLinks
+#    Options -indexes
+#    DirectoryIndex index.php
+#    RewriteEngine On
+#    RewriteCond %{REQUEST_FILENAME} !-d
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteRule ^ index.php [L]
+
 </IfModule>
