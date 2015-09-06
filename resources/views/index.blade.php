@@ -24,7 +24,7 @@
                 var dot = document.getElementById("dots");
 
                 function loading() {
-                    setTimeout(function() {
+                    setTimeout(function () {
                         dot.textContent = dot.textContent + ".";
                         loading();
                     }, 200);

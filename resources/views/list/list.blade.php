@@ -3,11 +3,11 @@
 @section('title', 'list')
 
 @section('css')
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/list.css">
 @endsection
 
 @section('content')
-    <div id="wrapper">
+    <div class="wrapper">
         list page
 
         <div>
@@ -16,10 +16,25 @@
             @endforeach
         </div>
 
+        <div id="list-con" class="list-con">
+            Loading <span id="dots">...</span>
+            <script>
+                var dot = document.getElementById("dots");
+
+                function loading() {
+                    setTimeout(function () {
+                        dot.textContent = dot.textContent + ".";
+                        loading();
+                    }, 200);
+                }
+                loading();
+            </script>
+        </div>
+
     </div>
 @endsection
 
 @section('javascript')
-    {{--<script src="/js/build/common.js"></script>--}}
-    {{--<script src="/js/build/index_react.js"></script>--}}
+    <script src="http://s2.qhimg.com/!05cf2e19/moment.js"></script>
+    <script src="/js/build/list_react.js"></script>
 @endsection

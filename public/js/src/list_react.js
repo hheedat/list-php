@@ -196,7 +196,7 @@ var ListAdd = React.createClass({
     render: function () {
         return (
             <div className="list-add cf">
-                <input type="text" className="input-text" ref="title" style={{width:this.state.inputWidth}}
+                <input type="text" className="text-input" ref="title" style={{width:this.state.inputWidth}}
                        onKeyDown={this.handleKeyDown}
                        placeholder="add new list ..."/>
                 <button ref="addBtn" className="add" onClick={this.addList}>add</button>
@@ -352,7 +352,7 @@ var ListDetail = React.createClass({
                             </div>
                             <div className="list-detail-data">
                                 <textarea className="my-textarea" ref="title" defaultValue={this.state.data.title}/>
-                                <input type="text" className="input-text" ref="time" disabled="disabled"
+                                <input type="text" className="text-input" ref="time" disabled="disabled"
                                        value={moment(this.state.data.time).format("YYYY-MM-DD HH:mm:ss")}/>
 
                                 <div className="content">
@@ -410,7 +410,7 @@ var List = React.createClass({
             <div className="list">
                 <LoadingBar/>
                 <ListAdd url="/home/list/add"/>
-                <ListShow url="/home/list/check" pollInterval={1000*60}/>
+                <ListShow url="/home/list/check" pollInterval={1000*60*60}/>
                 <ListDetail urlCheck="/home/list/checkDetail" urlUpdate="/home/list/update"
                             urlDelete="/home/list/delete"/>
                 <ListShowComplete/>
@@ -426,6 +426,6 @@ React.render(
 );
 
 React.render(
-    <LastUpdateTime updateInterval={1000*60}/>,
+    <LastUpdateTime updateInterval={1000*60*60}/>,
     document.getElementById('last-update')
 );
