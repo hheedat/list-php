@@ -1,7 +1,7 @@
 'use strict';
-var React = require('react');
-var $ = require("jquery");
-var moment = require("moment");
+//var React = require('react');
+//var $ = require("jquery");
+//var moment = require("moment");
 var Dispatcher = require('./dispacher');
 var LastUpdateTime = require('./up_time_react');
 var LoadingBar = require('./loading_bar_react');

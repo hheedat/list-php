@@ -1,4 +1,4 @@
-.input-text {
+.text-input-style {
   display: block;
   width: 70%;
   height: 20px;
@@ -14,7 +14,7 @@
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; }
-  .input-text:focus {
+  .text-input-style:focus {
     border-color: #66afe9;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
@@ -41,14 +41,15 @@ textarea {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); }
 
 body {
-  font-family: Microsoft YaHei, Arial, SimSun, Tahoma;
-  font-size: 16px; }
+  font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "STHeitiSC-Light", Arial, sans-serif;
+  font-size: 15px; }
 
 .hd, .warning-info {
   margin: 0 0 10px;
   padding: 0 10px; }
 
 .warning-info {
+  margin: 10px auto;
   color: red; }
 
 .hd {

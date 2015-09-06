@@ -7,10 +7,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\ListItem;
+use Illuminate\Support\Facades\Auth;
+
 //use DB;
 
 class ListItemController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -56,9 +60,7 @@ class ListItemController extends Controller
 
         return view('list.list', [
             'islogin' => true,
-            'userinfo' => [
-                'username' => ""
-            ],
+            'user' => Auth::user(),
             'listItem' => $listItem
         ]);
     }

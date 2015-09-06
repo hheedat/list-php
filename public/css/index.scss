@@ -1,7 +1,7 @@
 @import "head";
 
 .main-box {
-  width: 300px;
+  width: 310px;
   margin: 50px auto;
   border-radius: 5px;
   h4 {
@@ -17,16 +17,16 @@
   }
   .btn {
     @include btn($font-green-co);
-    margin-left: 70px;
+    margin-left: 80px;
   }
-  .warning,.msg {
+  .warning, .msg, .remember {
     font-size: 14px;
     color: red;
-    margin-left: 70px;
+    margin-left: 80px;
     margin-top: 5px;
   }
-  .msg{
-    color:$font-green-co;
+  .msg {
+    color: $font-green-co;
   }
 }
 
@@ -34,8 +34,8 @@
   margin-top: 20px;
 }
 
-input {
-  @extend .input-text;
+.text-input {
+  @extend .text-input-style;
   display: inline-block;
   width: 195px;
 }
@@ -46,7 +46,7 @@ label {
   text-align: right;
   vertical-align: middle;
   margin-right: 10px;
-  width: 60px;
+  width: 70px;
   line-height: 30px;
 }
 

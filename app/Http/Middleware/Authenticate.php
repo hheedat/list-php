@@ -35,25 +35,24 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        \Log::error("apple" . Auth::check());
         if (Auth::check()) {
+
+            \Log::info('login');
 
             return $next($request);
 
         } else {
 
-            return $next($request);
-
-            echo 'not login ';
-
             if ($request->is('auth/*') || $request->is('login') || $request->is('register') || $request->is('/')) {
-                echo 'not login 1';
+
+                \Log::info('not login and pass');
 
                 return $next($request);
 
             }
 
-            echo 'not login 2 ';
+            \Log::info('not login and redirect');
+
             return redirect('/');
 
         }

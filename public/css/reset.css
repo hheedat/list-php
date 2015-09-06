@@ -3,10 +3,6 @@ body, ul, ol, dl, dd, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, input
     padding: 0
 }
 
-body {
-    font: 12px/1.5 Arial, SimSun, Tahoma, Microsoft YaHei
-}
-
 ul, ol {
     list-style: none
 }
