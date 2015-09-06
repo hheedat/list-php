@@ -39,6 +39,14 @@ class Authenticate
 
             \Log::info('login');
 
+            if ($request->is('login') || $request->is('register') || $request->is('/')) {
+
+                \Log::info('login and redirect');
+
+                return redirect('/list');
+
+            }
+
             return $next($request);
 
         } else {

@@ -15,9 +15,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', function () {
 
-        return view('index', [
-            'islogin' => false
-        ]);
+        return view('index');
 
     });
 
@@ -44,7 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'list', 'namespace' => 'ListItem'], function () {
 
-        Route::get('/check', 'ListItemController@show');
+        Route::get('/', 'ListItemController@show');
 
     });
 

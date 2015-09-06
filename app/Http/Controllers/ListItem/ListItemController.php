@@ -59,7 +59,6 @@ class ListItemController extends Controller
         $listItem = ListItem::all();
 
         return view('list.list', [
-            'islogin' => true,
             'user' => Auth::user(),
             'listItem' => $listItem
         ]);
