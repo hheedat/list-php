@@ -33,7 +33,7 @@ var ListShow = React.createClass({
         }.bind(this)).fail(function (xhr, status, err) {
 
             alert("出现了一些问题");
-            console.error(this.props.url, status, err.toString());
+            console.error(this.props.url, status, err);
 
         }.bind(this)).always(function () {
 
@@ -65,8 +65,8 @@ var ListShow = React.createClass({
                 <div className="list-head">
                     <span></span>
                 </div>
-                <ListCon data={this.state.data} urlItemComplete="/home/list/itemComplete"
-                         urlItemUndo="/home/list/itemUndo"/>
+                <ListCon data={this.state.data} urlItemComplete="/list/complete"
+                         urlItemUndo="/list/undo"/>
             </div>
         );
     }
@@ -96,7 +96,7 @@ var ListCon = React.createClass({
         }).fail(function (xhr, status, err) {
 
             alert("出现了一些问题");
-            console.error(this.props.url, status, err.toString());
+            console.error(this.props.url, status, err);
 
         }.bind(this)).always(function () {
 
@@ -389,7 +389,7 @@ var ListShowComplete = React.createClass({
     render: function () {
         var inner = this.isShow ? (
             <div id="list-complete-show">
-                <ListShow url="/home/list/checkComplete" pollInterval={1000*60}/>
+                <ListShow url="/list/check/complete" pollInterval={1000*60*60}/>
             </div>
         ) : null;
         return (
@@ -409,10 +409,10 @@ var List = React.createClass({
         return (
             <div className="list">
                 <LoadingBar/>
-                <ListAdd url="/home/list/add"/>
-                <ListShow url="/home/list/check" pollInterval={1000*60*60}/>
-                <ListDetail urlCheck="/home/list/checkDetail" urlUpdate="/home/list/update"
-                            urlDelete="/home/list/delete"/>
+                <ListAdd url="/list/add"/>
+                <ListShow url="/list/check/1" pollInterval={1000*60*60}/>
+                <ListDetail urlCheck="/list/detail" urlUpdate="/list/update"
+                            urlDelete="/list/delete"/>
                 <ListShowComplete/>
             </div>
         );

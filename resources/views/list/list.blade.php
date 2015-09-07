@@ -8,13 +8,12 @@
 
 @section('content')
     <div class="wrapper">
-        list page
 
-        <div>
-            @foreach ($listItem as $item)
-                <p>This is list item {{ $item->id }} title {{$item->title}}</p>
-            @endforeach
-        </div>
+        {{--<div>--}}
+        {{--@foreach ($listItem as $item)--}}
+        {{--<p>This is list item {{ $item->id }} title {{$item->title}}</p>--}}
+        {{--@endforeach--}}
+        {{--</div>--}}
 
         <div id="list-con" class="list-con">
             Loading <span id="dots">...</span>

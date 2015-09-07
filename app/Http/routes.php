@@ -42,7 +42,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'list', 'namespace' => 'ListItem'], function () {
 
-        Route::get('/', 'ListItemController@show');
+        Route::get('/', 'ListItemController@index');
+
+        Route::post('/check/{status}', 'ListItemController@show');
+        Route::post('/add', 'ListItemController@store');
+        Route::post('/complete', 'ListItemController@complete');
+        Route::post('/undo', 'ListItemController@undo');
+        Route::post('/detail', 'ListItemController@detail');
+        Route::post('/update', 'ListItemController@update');
+        Route::post('/delete', 'ListItemController@destroy');
 
     });
 
