@@ -1,6 +1,6 @@
 <?php
 
-namespace listapp;
+namespace app;
 
 use Illuminate\Database\Eloquent\Model;
 

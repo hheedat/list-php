@@ -1,6 +1,6 @@
 <?php
 
-namespace listapp\Providers;
+namespace app\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'listapp\Model' => 'listapp\Policies\ModelPolicy',
+        'app\Model' => 'app\Policies\ModelPolicy',
     ];
 
     /**

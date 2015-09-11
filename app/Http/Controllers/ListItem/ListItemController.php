@@ -1,12 +1,12 @@
 <?php
 
-namespace listapp\Http\Controllers\ListItem;
+namespace app\Http\Controllers\ListItem;
 
 use Illuminate\Http\Request;
 
-use listapp\Http\Requests;
-use listapp\Http\Controllers\Controller;
-use listapp\ListItem;
+use app\Http\Requests;
+use app\Http\Controllers\Controller;
+use app\ListItem;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 

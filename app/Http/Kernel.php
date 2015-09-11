@@ -1,6 +1,6 @@
 <?php
 
-namespace listapp\Http;
+namespace app\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -13,11 +13,11 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-        \listapp\Http\Middleware\EncryptCookies::class,
+        \app\Http\Middleware\EncryptCookies::class,
         \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        \listapp\Http\Middleware\VerifyCsrfToken::class,
+        \app\Http\Middleware\VerifyCsrfToken::class,
     ];
 
     /**
@@ -26,8 +26,8 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \listapp\Http\Middleware\Authenticate::class,
+        'auth' => \app\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest' => \listapp\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \app\Http\Middleware\RedirectIfAuthenticated::class,
     ];
 }
