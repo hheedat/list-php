@@ -30,4 +30,22 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \app\Http\Middleware\RedirectIfAuthenticated::class,
     ];
+
+    public function handle($request)
+    {
+        try {
+
+            return parent::handle($request);
+
+        } catch (\Symfony\Component\HttpKernel\Exception\NotFoundHttpException $e) {
+
+            return response()->view('error.404', [], 404);
+
+        } catch (Exception $e) {
+
+            $this->reportException($e);
+
+            return $this->renderException($request, $e);
+        }
+    }
 }

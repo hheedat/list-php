@@ -8,9 +8,9 @@ use app\Http\Requests;
 use app\Http\Controllers\Controller;
 use app\ListItem;
 use Illuminate\Support\Facades\Auth;
+use Mockery\Exception;
 use Symfony\Component\HttpFoundation\Response;
-
-//use DB;
+use Log;
 
 class ListItemController extends Controller
 {
@@ -22,14 +22,10 @@ class ListItemController extends Controller
      */
     public function index()
     {
-//        $listItem = DB::select('select * from think_list');
         $id = Auth::user()->id;
-
-//        $listItem = ListItem::where('belong', $id)->get();
 
         return view('list.list', [
             'user' => Auth::user(),
-//            'listItem' => $listItem
         ]);
     }
 
@@ -52,52 +48,88 @@ class ListItemController extends Controller
      */
     public function store(Request $request)
     {
-        $id = Auth::user()->id;
+        try {
 
-        $listItem = new ListItem();
-        $listItem->title = $request->input('title');
-        $listItem->content = $request->input('content');
-        $listItem->time = date_create()->format('Y-m-d H:i:s');
-        $listItem->belong = $id;
-        $listItem->isuse = 1;
-        $listItem->save();
+            $id = Auth::user()->id;
 
-        return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => (object)array()]);
+            $listItem = new ListItem();
+            $listItem->title = $request->input('title');
+            $listItem->content = $request->input('content');
+            $listItem->time = date_create()->format('Y-m-d H:i:s');
+            $listItem->belong = $id;
+            $listItem->isuse = 1;
+            $listItem->save();
+
+            return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => (object)array()]);
+
+        } catch (Exception $e) {
+
+            Log::error($e);
+            return Response()->json(['errno' => 1, 'type' => 'fail', 'msg' => 'Whoops, looks like something went wrong']);
+
+        }
     }
 
 
     public function show($status)
     {
-        $status = ($status == 'complete') ? 0 : 1;
-        $id = Auth::user()->id;
+        try {
 
-        $listItem = ListItem::where('belong', $id)
-            ->where('status', $status)
-            ->where('isuse', 1)
-            ->orderBy('time', 'desc')
-            ->get();
+            $status = ($status == 'complete') ? 0 : 1;
+            $id = Auth::user()->id;
 
-        return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => $listItem]);
+            $listItem = ListItem::where('belong', $id)
+                ->where('status', $status)
+                ->where('isuse', 1)
+                ->orderBy('time', 'desc')
+                ->get();
+
+            return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => $listItem]);
+
+        } catch (Exception $e) {
+
+            Log::error($e);
+            return Response()->json(['errno' => 1, 'type' => 'fail', 'msg' => 'Whoops, looks like something went wrong']);
+
+        }
     }
 
     public function detail(Request $request)
     {
-        $userid = Auth::user()->id;
-        $listid = $request->input('id');
+        try {
 
-        $listItem = ListItem::where('id', $listid)->where('belong', $userid)->first();
+            $userid = Auth::user()->id;
+            $listid = $request->input('id');
 
-        return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => $listItem]);
+            $listItem = ListItem::where('id', $listid)->where('belong', $userid)->first();
+
+            return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => $listItem]);
+
+        } catch (Exception $e) {
+
+            Log::error($e);
+            return Response()->json(['errno' => 1, 'type' => 'fail', 'msg' => 'Whoops, looks like something went wrong']);
+
+        }
     }
 
     protected function status(Request $request, $status)
     {
-        $userid = Auth::user()->id;
-        $listid = $request->input('id');
+        try {
 
-        ListItem::where('id', $listid)->where('belong', $userid)->update(['status' => $status]);
+            $userid = Auth::user()->id;
+            $listid = $request->input('id');
 
-        return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => (object)array()]);
+            ListItem::where('id', $listid)->where('belong', $userid)->update(['status' => $status]);
+
+            return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => (object)array()]);
+
+        } catch (Exception $e) {
+
+            Log::error($e);
+            return Response()->json(['errno' => 1, 'type' => 'fail', 'msg' => 'Whoops, looks like something went wrong']);
+
+        }
     }
 
     public function complete(Request $request)
@@ -113,36 +145,53 @@ class ListItemController extends Controller
 
     public function edit($id)
     {
-        //
-    }
 
+    }
 
     public function update(Request $request)
     {
-        $userid = Auth::user()->id;
-        $listid = $request->input('id');
+        try {
 
-        $listItem = ListItem::where('id', $listid)->where('belong', $userid)->first();
-        $listItem->title = $request->input('title');
-        $listItem->content = $request->input('content');
-        $listItem->time = date_create()->format('Y-m-d H:i:s');
+            $userid = Auth::user()->id;
+            $listid = $request->input('id');
 
-        $listItem->save();
+            $listItem = ListItem::where('id', $listid)->where('belong', $userid)->first();
+            $listItem->title = $request->input('title');
+            $listItem->content = $request->input('content');
+            $listItem->time = date_create()->format('Y-m-d H:i:s');
 
-        return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => (object)array()]);
+            $listItem->save();
+
+            return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => (object)array()]);
+
+        } catch (Exception $e) {
+
+            Log::error($e);
+            return Response()->json(['errno' => 1, 'type' => 'fail', 'msg' => 'Whoops, looks like something went wrong']);
+
+        }
     }
 
 
     public function destroy(Request $request)
     {
-        $userid = Auth::user()->id;
-        $listid = $request->input('id');
+        try {
 
-        $listItem = ListItem::where('id', $listid)->where('belong', $userid)->first();
-        $listItem->isuse = 0;
+            $userid = Auth::user()->id;
+            $listid = $request->input('id');
 
-        $listItem->save();
+            $listItem = ListItem::where('id', $listid)->where('belong', $userid)->first();
+            $listItem->isuse = 0;
 
-        return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => (object)array()]);
+            $listItem->save();
+
+            return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => (object)array()]);
+
+        } catch (Exception $e) {
+
+            Log::error($e);
+            return Response()->json(['errno' => 1, 'type' => 'fail', 'msg' => 'Whoops, looks like something went wrong']);
+
+        }
     }
 }
