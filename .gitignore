@@ -8,5 +8,5 @@ output.tar.gz
 sftp-config.json
 *.css.map
 .module-cache
-.DS_storie
+.DS_store
 .idea/
