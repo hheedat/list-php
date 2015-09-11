@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: listapp
+        psr4_prefix: listapp
         src_path: app

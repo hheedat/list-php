@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace listapp\Http\Middleware;
 
 use Closure;
 use Auth;
