@@ -120,12 +120,12 @@ body {
       height: 100%;
       top: 0;
       left: 0;
-      transition: background-color 0.3s; }
+      transition: background-color 0.1s; }
     .wrapper .list-con .list-detail-mask-show {
       background-color: rgba(0, 0, 0, 0.6); }
     .wrapper .list-con .list-detail-wrapper {
       position: absolute;
-      transition: top 0.3s;
+      transition: top 0.1s;
       width: 95%;
       left: 50%;
       top: 100%;

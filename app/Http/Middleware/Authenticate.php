@@ -37,11 +37,7 @@ class Authenticate
     {
         if (Auth::check()) {
 
-            \Log::info('login');
-
             if ($request->is('login') || $request->is('register') || $request->is('/')) {
-
-                \Log::info('login and redirect');
 
                 return redirect('/list');
 
@@ -53,13 +49,9 @@ class Authenticate
 
             if ($request->is('auth/*') || $request->is('login') || $request->is('register') || $request->is('/')) {
 
-                \Log::info('not login and pass');
-
                 return $next($request);
 
             }
-
-            \Log::info('not login and redirect');
 
             return redirect('/');
 

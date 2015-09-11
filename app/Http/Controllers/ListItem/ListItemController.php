@@ -30,17 +30,6 @@ class ListItemController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-
-
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  Request $request
@@ -49,6 +38,10 @@ class ListItemController extends Controller
     public function store(Request $request)
     {
         try {
+
+            if ($request->input('title') == "") {
+                throw new ListItemException('store : title can\'t be null');
+            }
 
             $id = Auth::user()->id;
 
@@ -61,6 +54,10 @@ class ListItemController extends Controller
             $listItem->save();
 
             return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => (object)array()]);
+
+        } catch (ListItemException $e) {
+
+            return Response()->json(['errno' => 2, 'type' => 'fail', 'msg' => $e->getMessage()]);
 
         } catch (Exception $e) {
 
@@ -98,12 +95,20 @@ class ListItemController extends Controller
     {
         try {
 
+            if ($request->input('id') == "") {
+                throw new ListItemException('detail : list id can\'t be null');
+            }
+
             $userid = Auth::user()->id;
             $listid = $request->input('id');
 
             $listItem = ListItem::where('id', $listid)->where('belong', $userid)->first();
 
             return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => $listItem]);
+
+        } catch (ListItemException $e) {
+
+            return Response()->json(['errno' => 2, 'type' => 'fail', 'msg' => $e->getMessage()]);
 
         } catch (Exception $e) {
 
@@ -117,12 +122,20 @@ class ListItemController extends Controller
     {
         try {
 
+            if ($request->input('id') == "") {
+                throw new ListItemException('status : list id can\'t be null');
+            }
+
             $userid = Auth::user()->id;
             $listid = $request->input('id');
 
             ListItem::where('id', $listid)->where('belong', $userid)->update(['status' => $status]);
 
             return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => (object)array()]);
+
+        } catch (ListItemException $e) {
+
+            return Response()->json(['errno' => 2, 'type' => 'fail', 'msg' => $e->getMessage()]);
 
         } catch (Exception $e) {
 
@@ -142,15 +155,14 @@ class ListItemController extends Controller
         return $this->status($request, 1);
     }
 
-
-    public function edit($id)
-    {
-
-    }
-
     public function update(Request $request)
     {
         try {
+
+            if ($request->input('id') == "" || $request->input('title') == "") {
+                Log::info('apple watch');
+                throw new ListItemException('update : list id and title can\'t be null');
+            }
 
             $userid = Auth::user()->id;
             $listid = $request->input('id');
@@ -163,6 +175,10 @@ class ListItemController extends Controller
             $listItem->save();
 
             return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => (object)array()]);
+
+        } catch (ListItemException $e) {
+
+            return Response()->json(['errno' => 2, 'type' => 'fail', 'msg' => $e->getMessage()]);
 
         } catch (Exception $e) {
 
@@ -177,6 +193,10 @@ class ListItemController extends Controller
     {
         try {
 
+            if ($request->input('id') == "") {
+                throw new ListItemException('destroy : list id can\'t be null');
+            }
+
             $userid = Auth::user()->id;
             $listid = $request->input('id');
 
@@ -187,6 +207,10 @@ class ListItemController extends Controller
 
             return Response()->json(['errno' => 0, 'type' => 'succ', 'msg' => (object)array()]);
 
+        } catch (ListItemException $e) {
+
+            return Response()->json(['errno' => 2, 'type' => 'fail', 'msg' => $e->getMessage()]);
+
         } catch (Exception $e) {
 
             Log::error($e);
@@ -194,4 +218,9 @@ class ListItemController extends Controller
 
         }
     }
+}
+
+class ListItemException extends Exception
+{
+
 }

@@ -27,12 +27,12 @@ var ListShow = React.createClass({
             if (data.type == 'succ') {
                 this.updateList(data);
             } else {
-                alert('服务端出现了一些错误' + data.msg);
+                alert('出现了一些错误 : ' + data.msg);
             }
 
         }.bind(this)).fail(function (xhr, status, err) {
 
-            alert("出现了一些问题");
+            alert("网络出现了一些问题");
             console.error(this.props.url, status, err);
 
         }.bind(this)).always(function () {
@@ -90,12 +90,12 @@ var ListCon = React.createClass({
             if (data.type == 'succ') {
                 dispacher.list.trigger("update-list");
             } else {
-                alert('服务端出现了一些错误' + data.msg);
+                alert('出现了一些错误 : ' + data.msg);
             }
 
         }).fail(function (xhr, status, err) {
 
-            alert("出现了一些问题");
+            alert("网络出现了一些问题");
             console.error(this.props.url, status, err);
 
         }.bind(this)).always(function () {
@@ -176,13 +176,13 @@ var ListAdd = React.createClass({
             if (data.type == 'succ') {
                 dispacher.list.trigger("update-list");
             } else {
-                alert('服务端出现了一些错误' + data.msg);
+                alert('出现了一些错误' + data.msg);
             }
 
         }.bind(this)).fail(function (xhr, status, err) {
 
             console.error(this.props.url, status, err);
-            alert("出现了一些问题");
+            alert("网络出现了一些问题");
 
         }.bind(this)).always(function () {
 
@@ -236,13 +236,13 @@ var ListDetail = React.createClass({
                     $(this.refs.wrapper.getDOMNode()).addClass("list-detail-wrapper-show");
                 }.bind(this), 100);
             } else {
-                alert('服务端出现了一些错误' + data.msg);
+                alert('出现了一些错误' + data.msg);
             }
 
         }.bind(this)).fail(function (xhr, status, err) {
 
             console.error(this.props.url, status, err);
-            alert("出现了一些问题");
+            alert("网络出现了一些问题");
 
         }.bind(this)).always(function () {
 
@@ -284,13 +284,13 @@ var ListDetail = React.createClass({
                 self.closeDetail();
                 dispacher.list.trigger("update-list");
             } else {
-                alert('服务端出现了一些错误' + data.msg);
+                alert('出现了一些错误' + data.msg);
             }
 
         }).fail(function (xhr, status, err) {
 
             console.error(this.props.url, status, err);
-            alert("出现了一些问题");
+            alert("网络出现了一些问题");
 
         }.bind(this)).always(function () {
 
@@ -316,13 +316,13 @@ var ListDetail = React.createClass({
                 self.closeDetail();
                 dispacher.list.trigger("update-list");
             } else {
-                alert('服务端出现了一些错误' + data.msg);
+                alert('出现了一些错误' + data.msg);
             }
 
         }).fail(function (xhr, status, err) {
 
             console.error(this.props.url, status, err);
-            alert("出现了一些问题");
+            alert("网络出现了一些问题");
 
         }.bind(this)).always(function () {
 
@@ -411,7 +411,7 @@ var List = React.createClass({
             <div className="list">
                 <LoadingBar/>
                 <ListAdd url="/list/add"/>
-                <ListShow url="/list/check/1" pollInterval={1000*60*60}/>
+                <ListShow url="/list/check/undo" pollInterval={1000*60*60}/>
                 <ListDetail urlCheck="/list/detail" urlUpdate="/list/update"
                             urlDelete="/list/delete"/>
                 <ListShowComplete/>
