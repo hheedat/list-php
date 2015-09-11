@@ -6,7 +6,7 @@ Homestead.json
 output/
 output.tar.gz
 sftp-config.json
-.idea/
 *.css.map
 .module-cache
-.DS_store
+.DS_storie
+.idea/
