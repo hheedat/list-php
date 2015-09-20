@@ -10,3 +10,4 @@ sftp-config.json
 .module-cache
 .DS_store
 .idea/
+nginx_conf.conf
