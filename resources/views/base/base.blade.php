@@ -14,8 +14,8 @@
     @yield('content')
 
 
-    <script src="http://s4.qhimg.com/!3a2f956f/jquery-2.1.4.min.js"></script>
-    <script src="http://s1.qhimg.com/!64f42f7b/react.min.js"></script>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/react.min.js"></script>
     <script>
         $.ajaxSetup({
             headers: {

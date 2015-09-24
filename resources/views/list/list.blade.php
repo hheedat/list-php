@@ -34,6 +34,6 @@
 @endsection
 
 @section('javascript')
-    <script src="http://s2.qhimg.com/!05cf2e19/moment.js"></script>
+    <script src="js/lib/moment.js"></script>
     <script src="/js/build/list_react.js"></script>
 @endsection
