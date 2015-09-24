@@ -211,7 +211,7 @@ var RegisterBox = React.createClass({
 
                     <div className="item">
                         <label htmlFor="pwd">密码 : </label>
-                        <input className="text-input" ref="pwd" type="password" name="pwd" name="password"
+                        <input className="text-input" ref="pwd" type="password" name="password"
                                onChange={this.isInputLegal}
                                placeholder="登录密码"/>
 
@@ -220,7 +220,7 @@ var RegisterBox = React.createClass({
 
                     <div className="item">
                         <label htmlFor="pwd">确认密码 : </label>
-                        <input className="text-input" ref="pwd_confirmation" type="password" name="pwd"
+                        <input className="text-input" ref="pwd_confirmation" type="password"
                                name="password_confirmation"
                                onChange={this.isInputLegal}
                                placeholder="登录密码"/>

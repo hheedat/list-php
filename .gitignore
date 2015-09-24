@@ -4,6 +4,7 @@ Homestead.yaml
 Homestead.json
 .env
 output/
+public/js/build/
 output.tar.gz
 sftp-config.json
 *.css.map
